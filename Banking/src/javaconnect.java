@@ -15,12 +15,12 @@ public class javaconnect {
     public static Connection ConnecrDb()
     {
         try{
-        Class.forName("org.sqlite.JDBC");
-        Connection con=DriverManager.getConnection("jdbc:sqlite:C:\\Users\\Rohan Gupta\\Documents\\NetBeansProjects\\Banking\\Banks.db");
+        Class.forName("com.mysql.jdbc.Driver");
+        Connection con=DriverManager.getConnection("jdbc:mysql://localhost/banking","root","root");
         return con;
         }catch(Exception e){
             JOptionPane.showMessageDialog(null,e);
-            
+            e.printStackTrace();
         }
         return null;
     }

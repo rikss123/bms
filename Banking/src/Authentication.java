@@ -147,7 +147,7 @@ ob.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       String sql="select * from account where Acc=? and Pin=?";
+       String sql="select * from credential where Acc=? and Pin=?";
        try{
            pst=con.prepareStatement(sql);
            pst.setString(1,jTextField1.getText());

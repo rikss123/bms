@@ -334,10 +334,21 @@ public void Bal()
         e.printStackTrace();
     }
 }
+public void cred(){
+    String sql="insert into credential(Acc,Pin) values (?,?)";
+    try{
+        pst=con.prepareStatement(sql);
+        pst.setString(1, jTextField1.getText());
+        pst.setString(2, jTextField3.getText());
+        pst.execute();
+    }catch(Exception e){
+         JOptionPane.showMessageDialog(null, e);
+    }
+}
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
        setVisible(false);
  Authentication ob=new Authentication();
-setVisible(true);
+ob.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -353,30 +364,31 @@ setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        String sql="insert into account(Acc,Name,DOB,Pin,Acc_Type,Nationality,Caste,MICR_No,Gender,Mob,Address,Balance,Sec_Q,Sec_A) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        String sql="insert into account(Acc,Name,DOB,Acc_Type,Nationality,Caste,Gender,Mob,Address,Sec_Q,Sec_A) values (?,?,?,?,?,?,?,?,?,?,?)";
         try{
             pst=con.prepareStatement(sql);
             pst.setString(1,jTextField1.getText());
             pst.setString(2,jTextField5.getText());
             pst.setString(3,((JTextField)jDateChooser1.getDateEditor().getUiComponent()).getText());
-            pst.setString(4,jTextField3.getText());
-            pst.setString(5, (String)jComboBox1.getSelectedItem());
-            pst.setString(6, (String)jComboBox3.getSelectedItem());
-            pst.setString(7,jTextField8.getText());
-            pst.setString(8,jTextField2.getText());
+            
+            pst.setString(4, (String)jComboBox1.getSelectedItem());
+            pst.setString(5, (String)jComboBox3.getSelectedItem());
+            pst.setString(6,jTextField8.getText());
+           
             
             jRadioButton1.setActionCommand("Male");
             jRadioButton2.setActionCommand("Female");
-            pst.setString(9,buttonGroup1.getSelection().getActionCommand());
-            pst.setString(10,jTextField9.getText());
-            pst.setString(11,jTextField4.getText());              
-            pst.setString(12,jTextField7.getText());
-           pst.setString(13, (String)jComboBox2.getSelectedItem());
+            pst.setString(7,buttonGroup1.getSelection().getActionCommand());
+            pst.setString(8,jTextField9.getText());
+            pst.setString(9,jTextField4.getText());              
            
-           pst.setString(14,jTextField6.getText());
+           pst.setString(10, (String)jComboBox2.getSelectedItem());
+           
+           pst.setString(11,jTextField6.getText());
             pst.execute();
             JOptionPane.showMessageDialog(null, "Congrats! Account has been created !");
             Bal();
+            cred();
         }catch(Exception e){
             JOptionPane.showMessageDialog(null,e);
             e.printStackTrace();
